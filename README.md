@@ -270,7 +270,7 @@ xychart-beta
 | 적용 위치 | `rag/embedder.py`, `rag/retriever.py`, `config.py` |
 | 선택 이유 | Hit@K, MRR@K, nDCG@K 벤치마크에서 jina-embeddings-v3 대비 우수한 성능 |
 
-> **Important**
+> [!IMPORTANT]
 > - 단순한 LLM만 이용했을 때보다 **RAG를 이용했을 때 기술 평가 점수가 약 10% 정도 향상되었습니다.**
 > - 사진이나 표가 섞인 원본 문서가 아니라, **텍스트 임베딩에 특화된 형태로 정제된 데이터**를 기반으로 했을 때도 기술 평가 점수가 올라갔습니다.
 
@@ -556,7 +556,7 @@ classDiagram
 - scorecard (각 항목에 `reason` 등)
 - 최종 등급·배지·투자 의견·리스크 요인·headline_metrics 등
 
-> **트러블슈팅**  
+> [!IMPORTANT]- 트러블슈팅
 > 처음에는 state를 노드별로 하나씩 두어, JSON 형식으로 나온 값을 한 번에 넘기려고 했습니다. 그런데 기존 프롬프트 양도 많다 보니 context window 크기 한계에 부딪혔습니다. 그래서 각 노드별로 **다음 노드에서 필요한 값들 위주**로 state를 구성했고, 생각보다 필드가 많아졌습니다.
 
 이 구조 덕분에 파이프라인이 길어져도 **중간 산출물을 추적하고 재사용하기 쉽습니다.**
