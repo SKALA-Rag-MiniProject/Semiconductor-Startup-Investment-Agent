@@ -56,31 +56,31 @@ def web_search(queries: List[str], max_results: int = WEB_SEARCH_MAX_RESULTS) ->
     Returns:
         [{"title": ..., "url": ..., "snippet": ...}, ...]
     """
-    from duckduckgo_search import DDGS
+    from ddgs import DDGS
 
     all_results: List[Dict[str, str]] = []
     seen_urls: set = set()
 
-    with DDGS() as ddgs:
-        for query in queries:
-            try:
-                results = ddgs.text(query, max_results=max_results)
-                for r in results:
-                    url = r.get("href", "")
-                    if url in seen_urls:
-                        continue
-                    seen_urls.add(url)
-                    all_results.append({
-                        "title": r.get("title", ""),
-                        "url": url,
-                        "snippet": r.get("body", ""),
-                    })
-            except Exception as e:
+    ddgs = DDGS()
+    for query in queries:
+        try:
+            results = ddgs.text(query, max_results=max_results)
+            for r in results:
+                url = r.get("href", "")
+                if url in seen_urls:
+                    continue
+                seen_urls.add(url)
                 all_results.append({
-                    "title": f"검색 오류: {query}",
-                    "url": "",
-                    "snippet": str(e),
+                    "title": r.get("title", ""),
+                    "url": url,
+                    "snippet": r.get("body", ""),
                 })
+        except Exception as e:
+            all_results.append({
+                "title": f"검색 오류: {query}",
+                "url": "",
+                "snippet": str(e),
+            })
     return all_results
 
 
@@ -88,24 +88,43 @@ def web_search(queries: List[str], max_results: int = WEB_SEARCH_MAX_RESULTS) ->
 # LLM 호출
 # ────────────────────────────────────────────────────────
 
+def _sanitize(text: str, max_len: int = 0) -> str:
+    """프롬프트 내 JSON 직렬화를 깨뜨릴 수 있는 특수문자를 제거한다."""
+    # null 바이트, 서로게이트 등 제거
+    text = text.replace("\x00", "")
+    text = re.sub(r"[\ud800-\udfff]", "", text)
+    if max_len and len(text) > max_len:
+        text = text[:max_len] + "\n...(이하 생략)"
+    return text
+
+
 def call_llm(
     system_prompt: str,
     user_prompt: str,
     model: str = OPENAI_MODEL,
     temperature: float = OPENAI_TEMPERATURE,
     max_tokens: int = OPENAI_MAX_TOKENS,
+    force_json: bool = False,
 ) -> str:
     """OpenAI Chat Completion을 호출하고 응답 텍스트를 반환한다."""
     client = get_openai_client()
-    response = client.chat.completions.create(
-        model=model,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        messages=[
+    # 프롬프트 정리 (특수문자 제거, 길이 제한)
+    system_prompt = _sanitize(system_prompt, max_len=4000)
+    user_prompt = _sanitize(user_prompt, max_len=12000)
+
+    kwargs = {
+        "model": model,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+        "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-    )
+    }
+    if force_json:
+        kwargs["response_format"] = {"type": "json_object"}
+
+    response = client.chat.completions.create(**kwargs)
     return response.choices[0].message.content or ""
 
 
@@ -117,7 +136,14 @@ def call_llm_json(
     max_tokens: int = OPENAI_MAX_TOKENS,
 ) -> Dict[str, Any]:
     """LLM을 호출하고 JSON 응답을 파싱하여 반환한다."""
-    raw = call_llm(system_prompt, user_prompt, model, temperature, max_tokens)
+    raw = call_llm(
+        system_prompt,
+        user_prompt,
+        model,
+        temperature,
+        max_tokens,
+        force_json=True,
+    )
 
     # JSON 블록 추출 (```json ... ``` 또는 { ... })
     json_match = re.search(r"```json\s*([\s\S]*?)```", raw)

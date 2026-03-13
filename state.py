@@ -25,6 +25,7 @@ class ScorecardItem(TypedDict, total=False):
     judgement_label: str          # 우수|양호|보통|미흡|열악
     judgement_color: str          # green|blue|yellow|orange|red
     reason: str
+    evidence: List[str]           # 이 점수의 근거 출처 목록
 
 
 class HeadlineMetric(TypedDict, total=False):

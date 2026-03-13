@@ -15,31 +15,22 @@ from llm_client import call_llm_json, web_search
 # ────────────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """\
-당신은 반도체 스타트업 투자 평가를 위한 시장성 분석 에이전트다.
+당신은 반도체 스타트업 투자용 시장성 분석 에이전트다.
+제공된 웹/PDF 근거만 사용해 보수적으로 판단하고 JSON만 출력한다.
 
-목표:
-- 특정 스타트업이 속한 반도체 세부 시장의 시장성을 투자 관점에서 평가한다.
-- 시장 규모, 성장성, 수요 촉진 요인, 고객 도입 가능성, 지역별 기회와 제약을 분석한다.
-- 반드시 제공된 웹 검색 결과를 바탕으로만 판단한다.
+원칙:
+1) 홍보성 문구보다 제3자 자료 우선.
+2) training vs inference 구분.
+3) TAM/SAM/SOM, 성장률(CAGR), 수요요인, 고객도입, 지역 기회/제약, 진입장벽을 간결히 평가.
+4) 근거 부족 시 추정하지 말고 NEED_MORE_EVIDENCE.
+5) market_score는 0~25 정수.
+6) evidence에는 source_name/source_year/url 포함.
+"""
 
-행동 원칙:
-1. 기업 자체 홍보 문구를 그대로 신뢰하지 말고, 산업 리포트/시장 조사 기관/공식 자료/신뢰 가능한 뉴스 중심으로 교차 검증한다.
-2. 시장 규모는 가능하면 TAM, SAM, SOM으로 구분한다.
-3. 성장성은 CAGR, 수요 증가 배경, 정책/산업 변화, 고객군 확대 가능성으로 판단한다.
-4. 숫자나 전망이 상충하면 더 보수적인 해석을 우선한다.
-5. 정보가 부족한 항목은 추정하지 말고 "근거 부족" 또는 "추가 검증 필요"로 표시한다.
-6. 시장을 training과 inference로 구분하여 분석한다.
-7. 최종적으로 투자 평가용 market_score(0~25)를 산출한다.
-
-자기 점검 규칙:
-- TAM/SAM/SOM 중 2개 이상이 비어 있으면 NEED_MORE_EVIDENCE로 판단한다.
-- CAGR 출처가 2개 미만이면 "근거 부족"으로 표시한다.
-- evidence가 3개 미만이면 최종 점수를 낮은 신뢰도로 표시한다.
-
-출력 규칙:
-- 반드시 지정된 JSON 형식으로만 출력한다.
-- 근거 없는 단정 표현을 금지한다.
-- 각 핵심 판단에는 evidence 배열을 포함하며, 출처에 발행 연도를 반드시 기재한다.
+RETRY_SYSTEM_PROMPT = """\
+당신은 반도체 스타트업 시장성 평가기다.
+반드시 JSON object만 출력한다.
+설명 문장, 코드블록, 마크다운을 절대 출력하지 않는다.
 """
 
 
@@ -52,54 +43,29 @@ def _build_user_prompt(
 ) -> str:
     search_text = "\n".join(
         f"- [{r['title']}]({r['url']}): {r['snippet']}"
-        for r in search_results
+        for r in search_results[:6]
     )
 
     # PDF 임베딩 검색으로 가져온 원본 청크
     doc_texts = []
-    for i, doc in enumerate(retrieved_docs[:5], 1):
+    for i, doc in enumerate(retrieved_docs[:3], 1):
         source = doc.get("source", "unknown")
-        text = doc.get("text", "")[:800]
+        text = doc.get("text", "")[:450]
         doc_texts.append(f"[문서{i} / {source}]\n{text}")
     doc_section = "\n\n".join(doc_texts) if doc_texts else "(PDF 검색 결과 없음)"
 
     return f"""\
-다음 스타트업의 시장성을 분석해줘.
+기업: {company_name}
+질문: {question}
+기술 요약: {tech_summary[:500]}
 
-[기업 정보]
-- 회사명: {company_name}
-- 핵심 기술/카테고리: AI accelerator / NPU
-- 세부 반도체 영역: NPU, AI inference accelerator
-
-[기술 요약 (선행 에이전트 결과)]
-{tech_summary}
-
-[PDF 논문/기술 문서에서 검색된 원본 내용]
+[PDF 근거]
 {doc_section}
 
-[사용자 질문]
-{question}
-
-[웹 검색 결과]
+[웹 근거]
 {search_text}
 
-[분석 목적]
-이 분석은 반도체 스타트업 투자 평가용이다.
-시장성 평가는 총 25점 만점 기준으로 수행한다.
-
-[반드시 분석할 항목]
-1. 이 기업이 속한 시장의 정의 (training vs inference 구분 포함)
-2. TAM / SAM / SOM (데이터 부족 시 "산정 불가" 명시)
-3. 시장 규모와 성장률 (최소 2개 이상 시장 리포트 출처의 CAGR 비교)
-4. 수요 촉진 요인 (AI/GenAI 확산, 데이터센터 투자, 자율주행, 정부 정책 등)
-5. 주요 고객군과 실제 도입 가능성
-6. 지역별 기회와 제약
-7. 시장 진입의 현실적 제약
-8. 이 시장이 반도체 스타트업 투자 대상으로서 매력적인 이유와 한계
-9. market_score(0~25)와 점수 근거
-
-[출력 형식]
-아래 JSON 형식으로만 답변해.
+아래 JSON만 출력:
 {{
   "market_summary": "2~3문장 핵심 요약",
   "market_definition": "시장 정의 및 training/inference 구분",
@@ -155,7 +121,7 @@ def _build_user_prompt(
   "market_score": 0,
   "score_reason": "",
   "confidence": "high / medium / low",
-  "market_status": "SUCCESS / FAILED / NEED_MORE_EVIDENCE",
+  "market_status": "SUCCESS / NEED_MORE_EVIDENCE",
   "market_error": "",
   "evidence": [
     {{
@@ -168,13 +134,109 @@ def _build_user_prompt(
   ]
 }}
 
-[추가 규칙]
-- 숫자가 없으면 억지로 채우지 마.
-- 회사 홍보성 문구보다 제3자 자료를 우선해.
-- CAGR은 최소 2개 출처를 비교해서 보수적 값을 채택해.
-- evidence의 source_year는 반드시 기재해.
-- 투자자 관점에서 읽히도록 간결하고 근거 중심으로 작성해.
+규칙:
+- 숫자 근거 부족 시 "산정 불가" 또는 NEED_MORE_EVIDENCE.
+- CAGR은 가능하면 2개 출처 비교 후 보수적으로 정리.
+- evidence는 핵심 3~5개만.
 """
+
+
+def _build_retry_user_prompt(
+    company_name: str,
+    question: str,
+    search_results: list,
+    retrieved_docs: list,
+) -> str:
+    web_lines = []
+    for r in search_results[:8]:
+        title = (r.get("title", "") or "").strip()
+        snippet = (r.get("snippet", "") or "").strip()[:220]
+        if title or snippet:
+            web_lines.append(f"- {title}: {snippet}")
+    web_text = "\n".join(web_lines) if web_lines else "- (검색 결과 없음)"
+
+    doc_lines = []
+    for d in retrieved_docs[:3]:
+        source = d.get("source", "unknown")
+        text = (d.get("text", "") or "").strip()[:280]
+        if text:
+            doc_lines.append(f"- {source}: {text}")
+    doc_text = "\n".join(doc_lines) if doc_lines else "- (문서 근거 없음)"
+
+    return f"""\
+기업: {company_name}
+질문: {question}
+
+[웹 근거 요약]
+{web_text}
+
+[PDF 근거 요약]
+{doc_text}
+
+아래 JSON만 출력:
+{{
+  "market_summary": "2~3문장",
+  "market_score": 0,
+  "score_reason": "1~2문장",
+  "confidence": "high|medium|low",
+  "market_status": "SUCCESS|NEED_MORE_EVIDENCE",
+  "evidence": [
+    {{
+      "claim": "",
+      "source_name": "",
+      "source_year": "",
+      "url": "",
+      "why_it_matters": ""
+    }}
+  ]
+}}
+
+규칙:
+- market_score는 0~25 정수.
+- 수치 근거가 부족하면 market_status를 NEED_MORE_EVIDENCE로 둔다.
+- evidence는 최대 4개.
+"""
+
+
+def _fallback_market_result(company_name: str, search_results: list, retrieved_docs: list, error_msg: str) -> dict:
+    """LLM JSON 파싱 실패 시에도 시장성 결과를 생성하기 위한 규칙 기반 fallback."""
+    snippets = " ".join((r.get("snippet", "") or "") for r in search_results).lower()
+    doc_blob = " ".join((d.get("text", "") or "") for d in retrieved_docs).lower()
+    blob = f"{snippets} {doc_blob}"
+
+    score = 0.58
+    reasons = ["웹/문서 근거 기반 보수적 평가를 적용함."]
+
+    if any(k in blob for k in ["growth", "cagr", "forecast", "market size", "tams", "tam"]):
+        score += 0.05
+        reasons.append("시장 성장 또는 규모 관련 신호가 일부 확인됨.")
+    else:
+        reasons.append("시장 규모/성장 수치 근거가 부족함.")
+
+    if any(k in blob for k in ["customer", "deployment", "adoption", "design win", "contract"]):
+        score += 0.04
+        reasons.append("고객 도입/상용화 관련 단서가 일부 확인됨.")
+    else:
+        reasons.append("고객 도입 증거는 제한적임.")
+
+    if any(k in blob for k in ["competition", "incumbent", "barrier", "qualification"]):
+        score -= 0.03
+        reasons.append("경쟁/도입 장벽 요인이 존재함.")
+
+    score = round(min(max(score, 0.0), 1.0), 2)
+    summary = f"{company_name} 시장성은 보수적으로 {score:.2f}로 평가됨. " + " ".join(reasons)
+
+    return {
+        "market_summary": summary,
+        "market_score": score,
+        "market_evidence": [],
+        "market_detail": {
+            "score_reason": "규칙 기반 대체 분석 사용",
+            "confidence": "low",
+            "market_status": "FALLBACK_USED",
+            "market_error": error_msg[:200],
+        },
+    }
 
 
 # ────────────────────────────────────────────────────────
@@ -209,21 +271,87 @@ def market_eval_agent(state: AgentState) -> AgentState:
 
     result = call_llm_json(SYSTEM_PROMPT, user_prompt)
 
-    # 3) State에 기록
+    # 2-1) 1차 JSON 파싱 실패 시, 축약 프롬프트로 1회 재시도
     if "error" in result:
-        company["market_summary"] = f"LLM 응답 파싱 실패: {result.get('error', '')}"
-        company["market_score"] = 0.50  # 보수적 기본값
-        add_log(state, "market_eval", f"{company_name} LLM 파싱 실패, 기본값 사용")
+        retry_prompt = _build_retry_user_prompt(
+            company_name=company_name,
+            question=state["question"],
+            search_results=search_results,
+            retrieved_docs=company.get("retrieved_docs", []),
+        )
+        retry_result = call_llm_json(
+            RETRY_SYSTEM_PROMPT,
+            retry_prompt,
+            temperature=0.0,
+            max_tokens=1800,
+        )
+        if "error" not in retry_result:
+            result = retry_result
+            add_log(state, "market_eval", f"{company_name} 시장성 JSON 파싱 재시도 성공")
+        else:
+            add_log(state, "market_eval", f"{company_name} 시장성 JSON 파싱 재시도 실패")
+
+    # 3) 웹 검색 결과 자체를 state에 저장 (보고서 참고자료용)
+    company["market_web_sources"] = [
+        {"title": r["title"], "url": r["url"], "snippet": r["snippet"]}
+        for r in search_results if r.get("url")
+    ]
+
+    # 4) LLM 결과를 State에 기록
+    if "error" in result:
+        fallback = _fallback_market_result(
+            company_name=company_name,
+            search_results=search_results,
+            retrieved_docs=company.get("retrieved_docs", []),
+            error_msg=result.get("error", ""),
+        )
+        company["market_summary"] = fallback["market_summary"]
+        company["market_score"] = fallback["market_score"]
+        company["market_evidence"] = fallback["market_evidence"]
+        company["market_detail"] = fallback["market_detail"]
+        add_log(
+            state,
+            "market_eval",
+            f"{company_name} LLM 파싱 실패 -> fallback 적용 (market_score={company['market_score']})",
+        )
     else:
         company["market_summary"] = result.get("market_summary", "")
-        # market_score: 0~25 → 0.0~1.0 정규화
         raw_score = result.get("market_score", 12)
+        if isinstance(raw_score, dict):
+            raw_score = raw_score.get("score", raw_score.get("value", 12))
+        try:
+            raw_score = float(raw_score)
+        except (TypeError, ValueError):
+            raw_score = 12.0
         company["market_score"] = round(min(max(raw_score / 25.0, 0.0), 1.0), 2)
 
-        # evidence를 state에 저장 (보고서 REFERENCE용)
+        # LLM evidence 저장
         evidence = result.get("evidence", [])
-        if evidence:
-            company.setdefault("market_evidence", evidence)
+        if isinstance(evidence, dict):
+            evidence = [evidence]
+        company["market_evidence"] = evidence if isinstance(evidence, list) else []
+
+        # 전체 LLM 분석 결과도 저장 (상세 보고서용)
+        company["market_detail"] = {
+            k: result.get(k) for k in (
+                "market_definition", "tam_sam_som", "market_growth",
+                "demand_drivers", "score_reason", "confidence",
+            ) if result.get(k)
+        }
+
+        # LLM 응답이 형식상 성공해도 핵심 값이 비어 있으면 fallback으로 보강
+        if not company["market_summary"]:
+            fallback = _fallback_market_result(
+                company_name=company_name,
+                search_results=search_results,
+                retrieved_docs=company.get("retrieved_docs", []),
+                error_msg="market_summary empty",
+            )
+            company["market_summary"] = fallback["market_summary"]
+            company["market_score"] = fallback["market_score"]
+            if not company.get("market_detail"):
+                company["market_detail"] = fallback["market_detail"]
+            add_log(state, "market_eval", f"{company_name} market_summary 비어있음 -> fallback 보강")
 
         add_log(
             state, "market_eval",

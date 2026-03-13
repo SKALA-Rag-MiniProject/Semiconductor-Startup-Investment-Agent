@@ -68,6 +68,16 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_COMPANIES,
         help="Target companies to evaluate",
     )
+    parser.add_argument(
+        "--output",
+        default="output/investment_report.pdf",
+        help="Output PDF file path",
+    )
+    parser.add_argument(
+        "--no-pdf",
+        action="store_true",
+        help="Skip PDF generation, print markdown only",
+    )
     return parser.parse_args()
 
 
@@ -75,6 +85,13 @@ def main() -> None:
     args = parse_args()
     state = run_pipeline(question=args.question, target_companies=args.companies)
     print(state["final_report"])
+
+    if not args.no_pdf:
+        from pdf_exporter import markdown_to_pdf
+        pdf_path = markdown_to_pdf(state["final_report"], args.output)
+        print(f"\n{'='*50}")
+        print(f"PDF 보고서 생성 완료: {pdf_path}")
+        print(f"{'='*50}")
 
 
 if __name__ == "__main__":

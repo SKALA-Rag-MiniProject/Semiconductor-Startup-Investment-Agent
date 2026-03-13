@@ -230,21 +230,42 @@ def competitor_comparison_agent(state: AgentState) -> AgentState:
 
     result = call_llm_json(SYSTEM_PROMPT, user_prompt)
 
-    # 3) State에 기록
+    # 3) 웹 검색 결과 자체를 state에 저장 (보고서 참고자료용)
+    company["competitor_web_sources"] = [
+        {"title": r["title"], "url": r["url"], "snippet": r["snippet"]}
+        for r in search_results if r.get("url")
+    ]
+
+    # 4) LLM 결과를 State에 기록
     if "error" in result:
         company["competitor_summary"] = f"LLM 응답 파싱 실패: {result.get('error', '')}"
         company["competitor_score"] = 0.50
         add_log(state, "competitor_compare", f"{company_name} LLM 파싱 실패, 기본값 사용")
     else:
         company["competitor_summary"] = result.get("competition_summary", "")
-        # competition_score: 0~10 → 0.0~1.0 정규화
         raw_score = result.get("competition_score", 5)
+        if isinstance(raw_score, dict):
+            raw_score = raw_score.get("score", raw_score.get("value", 5))
+        try:
+            raw_score = float(raw_score)
+        except (TypeError, ValueError):
+            raw_score = 5.0
         company["competitor_score"] = round(min(max(raw_score / 10.0, 0.0), 1.0), 2)
 
-        # evidence를 state에 저장 (보고서 REFERENCE용)
+        # LLM evidence 저장
         evidence = result.get("evidence", [])
-        if evidence:
-            company.setdefault("competitor_evidence", evidence)
+        if isinstance(evidence, dict):
+            evidence = [evidence]
+        company["competitor_evidence"] = evidence if isinstance(evidence, list) else []
+
+        # 전체 LLM 분석 결과도 저장 (상세 보고서용)
+        company["competitor_detail"] = {
+            k: result.get(k) for k in (
+                "market_context", "direct_competitors", "indirect_competitors",
+                "target_company_advantages", "target_company_disadvantages",
+                "defensibility", "competition_scenario", "score_reason", "confidence",
+            ) if result.get(k)
+        }
 
         add_log(
             state, "competitor_compare",

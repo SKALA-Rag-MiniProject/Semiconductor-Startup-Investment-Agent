@@ -34,6 +34,7 @@ def make_scorecard_item(
     category: str,
     raw_score: int,
     reason: str,
+    evidence: List[str] | None = None,
 ) -> Dict:
     """스코어카드 한 행을 생성한다."""
     weight = SCORECARD_WEIGHTS[category]
@@ -47,4 +48,5 @@ def make_scorecard_item(
         "judgement_label": label,
         "judgement_color": color,
         "reason": reason,
+        "evidence": evidence or [],
     }
