@@ -18,7 +18,7 @@ class ProjectPdfPaperRetriever:
     def __init__(
         self,
         data_dir: str | Path,
-        model_name: str = "allenai-specter",
+        model_name: str = "BAAI/bge-m3",
         fallback_files: List[str] | None = None,
     ) -> None:
         self.data_dir = Path(data_dir)
