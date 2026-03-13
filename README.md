@@ -8,7 +8,7 @@
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/RAG-Evidence%20Grounded-7C3AED?style=for-the-badge" alt="RAG">
+  <img src="https://img.shields.io/badge/RAG-Document%20Grounded-7C3AED?style=for-the-badge" alt="RAG">
   <img src="https://img.shields.io/badge/Multi--Agent-State%20Driven-0F766E?style=for-the-badge" alt="Multi Agent">
   <img src="https://img.shields.io/badge/OpenAI-gpt--4o--mini-111827?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI">
   <img src="https://img.shields.io/badge/Embedding-BAAI%2Fbge--m3-E11D48?style=for-the-badge" alt="Embedding">
@@ -310,7 +310,7 @@ flowchart TD
 
 ### 4. Technical Rubric Scoring
 
-`rag/scoring.py`는 기술력을 네 가지 기준으로 1~5점 스케일로 평가합니다. 기술 독창성(구조적 차별성), 구현 성숙도(실칩, 제품, 데모, SDK 등), 효율성(성능, 전력, 메모리), 확장성 및 적용 가능성(LLM, 비전, 엣지, 서버 등)입니다. 각 항목은 `config.py`의 TECH_CRITERIA에 질문과 키워드가 매핑되어 있고, 이 값은 0~1로 정규화된 뒤 투자 판단 단계의 핵심 입력(tech_score, 루브릭 세부)으로 사용됩니다.
+`rag/scoring.py`는 기술력을 네 가지 기준으로 1~5점 스케일로 평가합니다. 기술 독창성(구조적 차별성), 구현 성숙도(실칩, 제품, 데모, SDK 등), 효율성(성능, 전력, 메모리), 확장성 및 적용 가능성(LLM, 비전, 엣지, 서버 등)입니다. 각 항목은 `config.py`의 `TECH_CRITERIA`에 질문과 키워드가 매핑되어 있고, 이 값은 0~1로 정규화된 뒤 투자 판단 단계의 핵심 입력(`tech_score`, 루브릭 세부)으로 사용됩니다.
 
 ```mermaid
 flowchart LR
