@@ -27,11 +27,14 @@ def run_pipeline(question: str, target_companies: list[str]) -> dict:
     model = ProjectAnalysisModel()
 
     for company_id in target_companies:
+        print(f"[START] company={company_id}", flush=True)
         state["current_company_id"] = company_id
         ensure_company_slot(state, company_id)
 
         while True:
+            print(f"[{company_id}] retrieval", flush=True)
             state = paper_retrieval_agent(state, retriever)
+            print(f"[{company_id}] proof_check", flush=True)
             state = proof_check_agent(state)
 
             company = get_current_company(state)
@@ -42,12 +45,18 @@ def run_pipeline(question: str, target_companies: list[str]) -> dict:
                 company["retrieval_status"] = "failed_after_retry"
                 break
 
+        print(f"[{company_id}] tech_summary", flush=True)
         state = tech_summary_agent(state, model)
+        print(f"[{company_id}] market_eval", flush=True)
         state = market_eval_agent(state)          # 웹 검색 + LLM
+        print(f"[{company_id}] competitor_compare", flush=True)
         state = competitor_comparison_agent(state) # 웹 검색 + LLM
+        print(f"[{company_id}] investment_risk", flush=True)
         state = investment_risk_agent(state)
+        print(f"[{company_id}] investment_decision", flush=True)
         state = investment_decision_agent(state)
         state["current_index"] += 1
+        print(f"[DONE] company={company_id}", flush=True)
 
     state["should_finalize"] = True
     state["stop_reason"] = "all target companies analyzed"
@@ -83,6 +92,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    print("[RUN] pipeline started", flush=True)
     state = run_pipeline(question=args.question, target_companies=args.companies)
     print(state["final_report"])
 

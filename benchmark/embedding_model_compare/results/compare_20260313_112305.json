@@ -1,0 +1,1598 @@
+{
+  "generated_at": "2026-03-13T11:24:07.100170",
+  "data_dir": "data",
+  "eval_file": "benchmark/embedding_model_compare/eval_set.yaml",
+  "top_k": 5,
+  "models": [
+    {
+      "model": "jinaai/jina-embeddings-v3",
+      "top_k": 5,
+      "num_queries": 5,
+      "metrics": {
+        "hit_at_k": 1.0,
+        "mrr_at_k": 0.3567,
+        "ndcg_at_k": 0.5363
+      },
+      "details": [
+        {
+          "query_id": "q1",
+          "query": "Rebellions NPU architecture and performance characteristics",
+          "relevant_sources": [
+            "rebellions_whitepaper.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.712109,
+              "text_preview": "5 that were available in 2015 when the TPUs were deployed. This restriction meant that they must include at least SECDED protection of internal SRAM as well as external DRAM memory"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.696166,
+              "text_preview": "PU cores and a shared 16 MiB scratchpad memory. ARIES uses two such clusters for a total of eight cores connected by a hybrid-topology NoC, while REGULUS contains a single core wit"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.686959,
+              "text_preview": "eration. 10. Conclusion Despite living on an I/O bus and having relatively little memory bandwidth that limits utilization of the TPU-four of the sixNN applications are memory-boun"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.68542,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.67924,
+              "text_preview": "The shift of intelligent compute to edge devices requires NPUs to execute a wide spectrum of workloads, ranging from compute-bound CNNs to memory-intensive transformer-based LLMs, "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.672598,
+              "text_preview": "tly. The benefit was ~3.5X. It was less confusing (and less space) to present all CPU results in floating point, rather than having one exception, with its own roofline. If all DNN"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.667631,
+              "text_preview": "e, and is just a little faster than a Haswell CPU.  Despite having a much smaller and lower power chip, the TPU has 25 times as many MACs and 3.5 times as much on-chip memory as t"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.666631,
+              "text_preview": "gly reports results contradictory to ours, with the GPU running inference much faster than the CPU [Ado16]. However, their CPU and GPU are not server-class, the CPU has only four c"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 3,
+              "score": 0.665763,
+              "text_preview": "3 in spirit to an FPU (floating-point unit) coprocessor than it is to a GPU. The goal was to run whole inference models in the TPU to reduce interactions with the host CPU and to b"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.662016,
+              "text_preview": "m when we saw that the FPGAs of that time were not competitive in performance compared to the GPUs of that time, and the TPU could be much lower power than GPUs while being as fast"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.656839,
+              "text_preview": "ultichip system to avoid external DRAM accesses. The follow-on PuDianNao (“general computer”) is aimed at more traditional machine learning algorithms beyond DNNs, such as support "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.653835,
+              "text_preview": "7 likely would aggressively tune the host code given a 3X faster TPU’. Replacing just the DDR3 Weight Memory with the equivalent GDDR5 memory requires doubling the number of memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.653042,
+              "text_preview": "rely run inference faster, a redesigned TPU using circa 2015 GPU memory would go two to three times as fast and boost the performance/Watt advantage of nearly 70 over the K80 and 2"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.652172,
+              "text_preview": "ithreading, multiprocessing, prefetching,...) that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.648325,
+              "text_preview": "1 Rebellions ATOM Whitepaper — Cleaned Text-First PDF for BGE-M3 Introduction Generative AI has increased the need for specialized hardware that can balance latency, throughput, an"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.645008,
+              "text_preview": "U, and TPU Platforms The six production applications in Table 1 are our workload for this paper. As mentioned above, these six are representative of 95% of TPU use in our datacente"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.642928,
+              "text_preview": "tunately, the TPU has a simple and repeatable execution model to help meet the response-time targets of interactive services and such high peak throughput that even small batch siz"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.640245,
+              "text_preview": "1 ARIES and REGULUS — Cleaned Text-First PDF for BGE-M3 Abstract We present a scalable NPU architecture, proven in two SoCs (ARIES and REGULUS), designed to efficiently execute div"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.639031,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.637905,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.712109
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.696166
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.68542
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.648325
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.25,
+          "ndcg_at_k": 0.43067655807339306
+        },
+        {
+          "query_id": "q2",
+          "query": "FuriosaAI product benchmark deployment information",
+          "relevant_sources": [
+            "furiosa_article.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.618431,
+              "text_preview": "red memory architecture, and robust synchronization. The benchmark results are used to argue for lower total cost of ownership and better sustainability for AI services."
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.616011,
+              "text_preview": "U, and TPU Platforms The six production applications in Table 1 are our workload for this paper. As mentioned above, these six are representative of 95% of TPU use in our datacente"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.601401,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.586188,
+              "text_preview": "on Starting as early as 2006, we discussed deploying GPUs, FPGAs, or custom ASICs in our datacenters. We concluded that the few applications that could run on special hardware coul"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.580798,
+              "text_preview": "PU cores and a shared 16 MiB scratchpad memory. ARIES uses two such clusters for a total of eight cores connected by a hybrid-topology NoC, while REGULUS contains a single core wit"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.576707,
+              "text_preview": "more disparaged. To compare NN machines better, we need a benchmark suite written at a high-level to port it to the wide variety of NN architectures. Fathom is a promising new"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.574928,
+              "text_preview": "5 that were available in 2015 when the TPUs were deployed. This restriction meant that they must include at least SECDED protection of internal SRAM as well as external DRAM memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.573681,
+              "text_preview": "nagement and interrupts. It is designed for long-term stability. The User Space driver changes frequently. It sets up and controls TPU execution, reformats data into TPU order, tra"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.564677,
+              "text_preview": "h scenarios. Evaluation Highlights The quantization evaluation on language models—including Llama-3.2-3B, Llama-3.1-8B, Qwen-3-4B, and Qwen-3-8B—uses perplexity as the primary metr"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.564041,
+              "text_preview": "2.4 ATOMUS: A 5nm 32TFLOPS/128TOPS ML System-on-Chip for Latency Critical Applications Chang-Hyo Yu, Hyo-Eun Kim, Sungho Shin, Kyeongryeol Bong, Hyunsuk Kim, Yoonho Boo, Jaewan Bae"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.559201,
+              "text_preview": "uld force us to reduce the number of K80 cards, which would hurt total cost of ownership. Thus, Boost mode is disabled. This restriction reduces peak bandwidth and TOPS (see Table "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.558657,
+              "text_preview": "s. Given this mandate, the TPU was designed, verified [Ste15], built, and deployed in datacenters in just 15 months. (Space limits the amount and the level of detail on the TPU in "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.557656,
+              "text_preview": "tly. The benefit was ~3.5X. It was less confusing (and less space) to present all CPU results in floating point, rather than having one exception, with its own roofline. If all DNN"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 3,
+              "score": 0.556535,
+              "text_preview": "ble-buffering (to hide the 256 cycles it takes to shift a tile in). This unit is designed for dense matrices. Sparse architectural support was omitted for time-to-deploy reasons. S"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 11,
+              "score": 0.5536,
+              "text_preview": "ands to hide memory overhead, and run memory operations concurrently with computations. Our scheduling algorithm uses a mix of heuristics, ILP (integer linear programming), and gen"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.549182,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.547204,
+              "text_preview": "d AI services and pipelined inference applications, including large language models (LLM). Owing to low thermal design power (TDP), the scale-out solution can support multi-stream "
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.544925,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.54185,
+              "text_preview": "he quantized applications; and that applications were written using TensorFlow, which made it easy to port them to the TPU at high-performance rather than them having to be rewritt"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.540149,
+              "text_preview": "ultichip system to avoid external DRAM accesses. The follow-on PuDianNao (“general computer”) is aimed at more traditional machine learning algorithms beyond DNNs, such as support "
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.618431
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.616011
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.601401
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.580798
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 11,
+              "score": 0.5536
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.2,
+          "ndcg_at_k": 0.38685280723454163
+        },
+        {
+          "query_id": "q3",
+          "query": "Mobilint product overview and edge AI solution",
+          "relevant_sources": [
+            "mobilint_aries.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.580338,
+              "text_preview": "onsiveness and stable 99- percentile latency for industrial-automation solutions. To realize decreased latency [3] and enhanced resource utilization compared to previous AI acceler"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.566693,
+              "text_preview": "red memory architecture, and robust synchronization. The benchmark results are used to argue for lower total cost of ownership and better sustainability for AI services."
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.560614,
+              "text_preview": "h scenarios. Evaluation Highlights The quantization evaluation on language models—including Llama-3.2-3B, Llama-3.1-8B, Qwen-3-4B, and Qwen-3-8B—uses perplexity as the primary metr"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.560549,
+              "text_preview": "hese contexts. ECC-capable DRAM provides high bandwidth data, and additional on-chip reliability features include logic parity and SRAM SECDED. Root-of-trust (RoT) maintains the So"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.547776,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.54567,
+              "text_preview": "The shift of intelligent compute to edge devices requires NPUs to execute a wide spectrum of workloads, ranging from compute-bound CNNs to memory-intensive transformer-based LLMs, "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.528873,
+              "text_preview": "2.4 ATOMUS: A 5nm 32TFLOPS/128TOPS ML System-on-Chip for Latency Critical Applications Chang-Hyo Yu, Hyo-Eun Kim, Sungho Shin, Kyeongryeol Bong, Hyunsuk Kim, Yoonho Boo, Jaewan Bae"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.523051,
+              "text_preview": "1 ARIES and REGULUS — Cleaned Text-First PDF for BGE-M3 Abstract We present a scalable NPU architecture, proven in two SoCs (ARIES and REGULUS), designed to efficiently execute div"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.522781,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.51458,
+              "text_preview": "thanto, Jonghyeon Kim, Heejin Cho, Hyebin Jeong, Sungmin Choi, Sujin Han, Junkyu Park, Kwangbae Lee, Sung-il Bae, Jaeho Bang, Kyeong-Jae Lee, Yeongsang Jang, Jungchul Park, Sanggyu"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.512475,
+              "text_preview": "1 Rebellions ATOM Whitepaper — Cleaned Text-First PDF for BGE-M3 Introduction Generative AI has increased the need for specialized hardware that can balance latency, throughput, an"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.511516,
+              "text_preview": "d AI services and pipelined inference applications, including large language models (LLM). Owing to low thermal design power (TDP), the scale-out solution can support multi-stream "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.508866,
+              "text_preview": "on Starting as early as 2006, we discussed deploying GPUs, FPGAs, or custom ASICs in our datacenters. We concluded that the few applications that could run on special hardware coul"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.507067,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.505662,
+              "text_preview": "uantization to reduce memory bandwidth, and the aggregator performs INT30 accumulation with fused requantization and activation before writing results back to local memory. The TME"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 7,
+              "score": 0.503119,
+              "text_preview": "7 determined by software based on the lowered shapes and tactics. It ensures data order between multiple sources and within packets from a single source and supports multicast. The"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.501834,
+              "text_preview": "chieve both flexibility and high compute utilization through a coarse-grained reconfigurable array architecture, multi-layered memory hierarchy, and synchronization mechanisms that"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.498601,
+              "text_preview": "mize the sync latency, a dedicated sync bus is deﬁned between the neural engines, (s1) and (s2), with 16ns for the longest path. A programmable load/store processor, shown in Fig. "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.494037,
+              "text_preview": "mory in the TPU would triple achieved TOPS and raise TOPS/Watt to nearly 70X the GPU CPU. 1. Introduction to Neural Networks The synergy between the large data sets in the cloud an"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.492531,
+              "text_preview": "olutions in speech, vision, language, translation, search ranking, and many more. Neural networks (NN) target brain-like functionality and are based on a simple artificial neuron: "
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.580338
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.566693
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.560614
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.508866
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 7,
+              "score": 0.503119
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.3333333333333333,
+          "ndcg_at_k": 0.5
+        },
+        {
+          "query_id": "q4",
+          "query": "NPU basics dataflow memory hierarchy and efficiency",
+          "relevant_sources": [
+            "NPU_Basic.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.704819,
+              "text_preview": "nt high-bandwidth interconnect between the host and external DRAM, shown in Fig. 2.4.2 as d4- a. To hit the required memory bandwidth from a single neural engine perspective, we ex"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.699154,
+              "text_preview": "7 likely would aggressively tune the host code given a 3X faster TPU’. Replacing just the DDR3 Weight Memory with the equivalent GDDR5 memory requires doubling the number of memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.693695,
+              "text_preview": "eration. 10. Conclusion Despite living on an I/O bus and having relatively little memory bandwidth that limits utilization of the TPU-four of the sixNN applications are memory-boun"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.686985,
+              "text_preview": "eloped. At the lowest level, depicted as d0 in Fig. 2.4.2, a scratch pad is deﬁned with the highest bandwidth and lowest latency in the SoC. The second level, d1, provides data tra"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.68163,
+              "text_preview": "is far to the right at 1350 operations per byte of weight memory fetched. The gap between the actual operations per second of an application and the ceiling directly above it shows"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.681358,
+              "text_preview": "ncies. To address the overhead, ﬁ ve levels of synchronization hierarchy are deﬁned. The L0-sync, the lowest level depicted as s0 in Fig. 2.4.2, resolves the intra-core instruction"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 3,
+              "score": 0.673277,
+              "text_preview": "3 in spirit to an FPU (floating-point unit) coprocessor than it is to a GPU. The goal was to run whole inference models in the TPU to reduce interactions with the host CPU and to b"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.670349,
+              "text_preview": "tly. The benefit was ~3.5X. It was less confusing (and less space) to present all CPU results in floating point, rather than having one exception, with its own roofline. If all DNN"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.669055,
+              "text_preview": "10 dataflow architecture that takes advantage of zeros by run-length encoding data to reduce the memory footprint and saves power by avoiding computations when an input is zero [Ch"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.668467,
+              "text_preview": "ithreading, multiprocessing, prefetching,...) that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.666681,
+              "text_preview": "ng the data [Rea16]. [Gup15] looks arithmetic for training instead of for inference. Others leverage the lower precision of DNN calculations by utilizing analog circuits during the"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.663888,
+              "text_preview": "e, and is just a little faster than a Haswell CPU.  Despite having a much smaller and lower power chip, the TPU has 25 times as many MACs and 3.5 times as much on-chip memory as t"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.662462,
+              "text_preview": "eration. The TPU spends less than half of its cycles performing matrix operations for CNN1 (column 7, row 1). On each of those active cycles, only about half of the 65,536 MACs hol"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.656702,
+              "text_preview": "5 that were available in 2015 when the TPUs were deployed. This restriction meant that they must include at least SECDED protection of internal SRAM as well as external DRAM memory"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.65372,
+              "text_preview": "15 execution time. The optimal cases commonly utilize all the eight DPEs in parallel. They differ in the usage of the accumulation unit and the data supply from the fetch unit. On "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.651286,
+              "text_preview": "6 replace floating-point operations with integer operations. As weights do not normally fit in on-chip memory for NN applications, the second change is to redefine operational inte"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.651221,
+              "text_preview": "ut over the PCIe bus. Figures 6 and 7 show rooflines for a single Haswell die and for a single K80 die. The six NN applications are generally further below their ceilings than was "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.650129,
+              "text_preview": "e been designed in the same process technology if we had more than 15 months. More aggressive logic synthesis and block design might have increased the clock rate by 50%. Designing"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.648217,
+              "text_preview": "nagement and interrupts. It is designed for long-term stability. The User Space driver changes frequently. It sets up and controls TPU execution, reformats data into TPU order, tra"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.6477,
+              "text_preview": "in utilization as high as possible. Fig. 2.4.4 shows a typical case for the task manipulation. The CP issues commands that are independent of the data loaded from a host memory and"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.704819
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.699154
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.65372
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.5,
+          "ndcg_at_k": 0.6309297535714575
+        },
+        {
+          "query_id": "q5",
+          "query": "AI inference accelerator efficiency TOPS per watt latency",
+          "relevant_sources": [
+            "NPU_Basic.pdf",
+            "furiosa_article.pdf",
+            "rebellions_whitepaper.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.790407,
+              "text_preview": "formance proxy, we believe that keeping the computing units busy is one of the most important factors to build a faster yet efﬁcient inference accelerator. Compared to another AI a"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.756935,
+              "text_preview": "d Optimization A precise cost model is critical for optimizing AI programs. Such a model helps predict how different tactics affect performance and power consumption, allowing for "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.749607,
+              "text_preview": "thanto, Jonghyeon Kim, Heejin Cho, Hyebin Jeong, Sungmin Choi, Sujin Han, Junkyu Park, Kwangbae Lee, Sung-il Bae, Jaeho Bang, Kyeong-Jae Lee, Yeongsang Jang, Jungchul Park, Sanggyu"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.734428,
+              "text_preview": "hasn’t yet caught up with MLPs and LSs in the datacenter. We hope that architects try to accelerate MLPs and LSs with at least as much gusto.  Pitfall: For NN hardware, Inferences"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.730782,
+              "text_preview": "onsiveness and stable 99- percentile latency for industrial-automation solutions. To realize decreased latency [3] and enhanced resource utilization compared to previous AI acceler"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.729628,
+              "text_preview": "emory operations and processor-to-processor communications with decentralized RISC-type processor cores within a single engine. The command processor (CP) compiles command descript"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.728617,
+              "text_preview": "ge, access, and processing, which in turn affects the overall efficiency of the accelerator. Optimizing SRAM Locality and Tensor Movement Optimizing SRAM locality between consecuti"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.728193,
+              "text_preview": "15 execution time. The optimal cases commonly utilize all the eight DPEs in parallel. They differ in the usage of the accumulation unit and the data supply from the fetch unit. On "
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.724194,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.706888,
+              "text_preview": "ut over the PCIe bus. Figures 6 and 7 show rooflines for a single Haswell die and for a single K80 die. The six NN applications are generally further below their ceilings than was "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.705927,
+              "text_preview": "s than half the power of the K80 in a relatively small die. This larger memory helps increase the operational intensity of applications to let them utilize the abundant MACs even m"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 1,
+              "score": 0.698381,
+              "text_preview": "024. We performed an extensive case study of running the LLaMA-2 7B model and evaluated its performance and power efficiency on various configurations of sequence length and batch "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.69557,
+              "text_preview": "11 need to perform well when coping with 99th-percentile latency deadlines. While the K80 may excel at training, on average it is just a little faster than Haswell at inference for"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.693972,
+              "text_preview": "metric for NN processors than MIPS and MFLOPS are for CPUs and GPUs. We also learned that inference applications have serious response-time bounds because they are often part of us"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.692669,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.686952,
+              "text_preview": "7 likely would aggressively tune the host code given a 3X faster TPU’. Replacing just the DDR3 Weight Memory with the equivalent GDDR5 memory requires doubling the number of memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.682097,
+              "text_preview": "1 In-Datacenter Performance Analysis of a Tensor Processing Unit Abstract Many architects believe that major improvements in cost-energy-performance must now come from domain-speci"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.68148,
+              "text_preview": "d AI services and pipelined inference applications, including large language models (LLM). Owing to low thermal design power (TDP), the scale-out solution can support multi-stream "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 14,
+              "score": 0.679577,
+              "text_preview": "memory boundedness due to softmax and KV cache which is also reported in Fig. 11 an encoder block during the prefill phase. In Fig. 13 (a), we can see how the computation time can "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.678737,
+              "text_preview": "millions of lines of C++ code. The applications are typically user-facing, which leads to rigid response-time limits. Each model needs between 5M and 100M weights (9th column of Ta"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.790407
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.756935
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.734428
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.724194
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.5,
+          "ndcg_at_k": 0.7328286204777911
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "model": "BAAI/bge-m3",
+      "top_k": 5,
+      "num_queries": 5,
+      "metrics": {
+        "hit_at_k": 1.0,
+        "mrr_at_k": 0.6333,
+        "ndcg_at_k": 0.7466
+      },
+      "details": [
+        {
+          "query_id": "q1",
+          "query": "Rebellions NPU architecture and performance characteristics",
+          "relevant_sources": [
+            "rebellions_whitepaper.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.665427,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.653842,
+              "text_preview": "PU cores and a shared 16 MiB scratchpad memory. ARIES uses two such clusters for a total of eight cores connected by a hybrid-topology NoC, while REGULUS contains a single core wit"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.64663,
+              "text_preview": "1 Rebellions ATOM Whitepaper — Cleaned Text-First PDF for BGE-M3 Introduction Generative AI has increased the need for specialized hardware that can balance latency, throughput, an"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.620309,
+              "text_preview": "The shift of intelligent compute to edge devices requires NPUs to execute a wide spectrum of workloads, ranging from compute-bound CNNs to memory-intensive transformer-based LLMs, "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.617795,
+              "text_preview": "tunately, the TPU has a simple and repeatable execution model to help meet the response-time targets of interactive services and such high peak throughput that even small batch siz"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.611471,
+              "text_preview": "rely run inference faster, a redesigned TPU using circa 2015 GPU memory would go two to three times as fast and boost the performance/Watt advantage of nearly 70 over the K80 and 2"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.607586,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.60433,
+              "text_preview": "1 runs CNNs-using a systolic matrix multiplier-2.3X as fast as a 2.1 GHz, 16-core, dual-socket server [Ovt15a]. Using the next generation of FPGAs (14-nm Arria 10) of Catapult V2, "
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.604277,
+              "text_preview": "1 ARIES and REGULUS — Cleaned Text-First PDF for BGE-M3 Abstract We present a scalable NPU architecture, proven in two SoCs (ARIES and REGULUS), designed to efficiently execute div"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.601282,
+              "text_preview": "ut over the PCIe bus. Figures 6 and 7 show rooflines for a single Haswell die and for a single K80 die. The six NN applications are generally further below their ceilings than was "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.598986,
+              "text_preview": "ng the data [Rea16]. [Gup15] looks arithmetic for training instead of for inference. Others leverage the lower precision of DNN calculations by utilizing analog circuits during the"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.596071,
+              "text_preview": "5 that were available in 2015 when the TPUs were deployed. This restriction meant that they must include at least SECDED protection of internal SRAM as well as external DRAM memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.595613,
+              "text_preview": "tly. The benefit was ~3.5X. It was less confusing (and less space) to present all CPU results in floating point, rather than having one exception, with its own roofline. If all DNN"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.595424,
+              "text_preview": "1 In-Datacenter Performance Analysis of a Tensor Processing Unit Abstract Many architects believe that major improvements in cost-energy-performance must now come from domain-speci"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.594845,
+              "text_preview": "hardware. The TPU has 106 performance counters, and if anything we would like a few more (see Table 3). The raison d'etre for NN accelerators is performance, and it is way too earl"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.591088,
+              "text_preview": "e, and is just a little faster than a Haswell CPU.  Despite having a much smaller and lower power chip, the TPU has 25 times as many MACs and 3.5 times as much on-chip memory as t"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.587799,
+              "text_preview": "Processor, shared on-chip memory, and GDDR6 memory on one substrate. The architecture relies on a sophisticated Network-on-Chip for high-bandwidth inter-component communication and"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 3,
+              "score": 0.58691,
+              "text_preview": "3 in spirit to an FPU (floating-point unit) coprocessor than it is to a GPU. The goal was to run whole inference models in the TPU to reduce interactions with the host CPU and to b"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.585376,
+              "text_preview": "m when we saw that the FPGAs of that time were not competitive in performance compared to the GPUs of that time, and the TPU could be much lower power than GPUs while being as fast"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.584635,
+              "text_preview": "ithreading, multiprocessing, prefetching,...) that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.665427
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.653842
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.64663
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.617795
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.3333333333333333,
+          "ndcg_at_k": 0.5
+        },
+        {
+          "query_id": "q2",
+          "query": "FuriosaAI product benchmark deployment information",
+          "relevant_sources": [
+            "furiosa_article.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "furiosa_article.pdf",
+              "page": 1,
+              "score": 0.506088,
+              "text_preview": "intra compute units. To do that, we propose a circuit switch-based fetch network to flexibly connect compute units to enable inter-compute unit data reuse. We also exploit input br"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.484979,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.479194,
+              "text_preview": "formance proxy, we believe that keeping the computing units busy is one of the most important factors to build a faster yet efﬁcient inference accelerator. Compared to another AI a"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.478715,
+              "text_preview": "red memory architecture, and robust synchronization. The benchmark results are used to argue for lower total cost of ownership and better sustainability for AI services."
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.476782,
+              "text_preview": "onsiveness and stable 99- percentile latency for industrial-automation solutions. To realize decreased latency [3] and enhanced resource utilization compared to previous AI acceler"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.476299,
+              "text_preview": "h scenarios. Evaluation Highlights The quantization evaluation on language models—including Llama-3.2-3B, Llama-3.1-8B, Qwen-3-4B, and Qwen-3-8B—uses perplexity as the primary metr"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.475393,
+              "text_preview": "uires only four steps, but each step takes four times longer, for 32 us of time. Our CISC instructions are long, so decode is insignificant and does not hide the overhead of loadin"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.473793,
+              "text_preview": "thanto, Jonghyeon Kim, Heejin Cho, Hyebin Jeong, Sungmin Choi, Sujin Han, Junkyu Park, Kwangbae Lee, Sung-il Bae, Jaeho Bang, Kyeong-Jae Lee, Yeongsang Jang, Jungchul Park, Sanggyu"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.471776,
+              "text_preview": "more disparaged. To compare NN machines better, we need a benchmark suite written at a high-level to port it to the wide variety of NN architectures. Fathom is a promising new"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.462088,
+              "text_preview": "uld force us to reduce the number of K80 cards, which would hurt total cost of ownership. Thus, Boost mode is disabled. This restriction reduces peak bandwidth and TOPS (see Table "
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.460755,
+              "text_preview": "1 Rebellions ATOM Whitepaper — Cleaned Text-First PDF for BGE-M3 Introduction Generative AI has increased the need for specialized hardware that can balance latency, throughput, an"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.457655,
+              "text_preview": "ultichip system to avoid external DRAM accesses. The follow-on PuDianNao (“general computer”) is aimed at more traditional machine learning algorithms beyond DNNs, such as support "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.455258,
+              "text_preview": "15 execution time. The optimal cases commonly utilize all the eight DPEs in parallel. They differ in the usage of the accumulation unit and the data supply from the fetch unit. On "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.451846,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 8,
+              "score": 0.450758,
+              "text_preview": "Twenty-five SPERT-II workstations, accelerated by the T0 custom ASIC, were deployed starting in 1995 to do both NN training and inference for speech recognition [Asa98]. The 40-Mhz"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.450112,
+              "text_preview": "1 In-Datacenter Performance Analysis of a Tensor Processing Unit Abstract Many architects believe that major improvements in cost-energy-performance must now come from domain-speci"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.440296,
+              "text_preview": "U, and TPU Platforms The six production applications in Table 1 are our workload for this paper. As mentioned above, these six are representative of 95% of TPU use in our datacente"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.43902,
+              "text_preview": "on Starting as early as 2006, we discussed deploying GPUs, FPGAs, or custom ASICs in our datacenters. We concluded that the few applications that could run on special hardware coul"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.43857,
+              "text_preview": "1 ARIES and REGULUS — Cleaned Text-First PDF for BGE-M3 Abstract We present a scalable NPU architecture, proven in two SoCs (ARIES and REGULUS), designed to efficiently execute div"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.437389,
+              "text_preview": "emory operations and processor-to-processor communications with decentralized RISC-type processor cores within a single engine. The command processor (CP) compiles command descript"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "furiosa_article.pdf",
+              "page": 1,
+              "score": 0.506088
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.484979
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.478715
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.476299
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.475393
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "ndcg_at_k": 1.0
+        },
+        {
+          "query_id": "q3",
+          "query": "Mobilint product overview and edge AI solution",
+          "relevant_sources": [
+            "mobilint_aries.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.504342,
+              "text_preview": "1 Rebellions ATOM Whitepaper — Cleaned Text-First PDF for BGE-M3 Introduction Generative AI has increased the need for specialized hardware that can balance latency, throughput, an"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.498382,
+              "text_preview": "and others when compared to other AI accelerator/GPU cards. It is worth noting that this result was obtained using the ﬁrst version of software (driver and compiler) so a performan"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.489716,
+              "text_preview": "1 ARIES and REGULUS — Cleaned Text-First PDF for BGE-M3 Abstract We present a scalable NPU architecture, proven in two SoCs (ARIES and REGULUS), designed to efficiently execute div"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.489184,
+              "text_preview": "The shift of intelligent compute to edge devices requires NPUs to execute a wide spectrum of workloads, ranging from compute-bound CNNs to memory-intensive transformer-based LLMs, "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.469395,
+              "text_preview": "esearch, which appeared after the TPU was deployed, accelerates DNNs by optimizing the cases when weights and data are very small or zero. Our tight schedule precluded such optimiz"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 8,
+              "score": 0.466352,
+              "text_preview": "ns. It comprises multiple functional units in clusters, which the compiler can pipeline by forming chains. The functional units realize various arithmetic and logical opera-tions o"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 2,
+              "score": 0.464519,
+              "text_preview": "h scenarios. Evaluation Highlights The quantization evaluation on language models—including Llama-3.2-3B, Llama-3.1-8B, Qwen-3-4B, and Qwen-3-8B—uses perplexity as the primary metr"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.461993,
+              "text_preview": "chieve both flexibility and high compute utilization through a coarse-grained reconfigurable array architecture, multi-layered memory hierarchy, and synchronization mechanisms that"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.461243,
+              "text_preview": "uantization to reduce memory bandwidth, and the aggregator performs INT30 accumulation with fused requantization and activation before writing results back to local memory. The TME"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.455501,
+              "text_preview": "hese contexts. ECC-capable DRAM provides high bandwidth data, and additional on-chip reliability features include logic parity and SRAM SECDED. Root-of-trust (RoT) maintains the So"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.450273,
+              "text_preview": "onsiveness and stable 99- percentile latency for industrial-automation solutions. To realize decreased latency [3] and enhanced resource utilization compared to previous AI acceler"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.44613,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.440391,
+              "text_preview": "d AI services and pipelined inference applications, including large language models (LLM). Owing to low thermal design power (TDP), the scale-out solution can support multi-stream "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 3,
+              "score": 0.439732,
+              "text_preview": "ghts from Weight Memory into the Weight FIFO as input to the Matrix Unit. 3. MatrixMultiply/Convolve causes the Matrix Unit to perform a matrix multiply or a convolution from the U"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 7,
+              "score": 0.439329,
+              "text_preview": "7 determined by software based on the lowered shapes and tactics. It ensures data order between multiple sources and within packets from a single source and supports multicast. The"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 8,
+              "score": 0.436268,
+              "text_preview": "iding subsequent element-wise operations following contraction. E. Transpose Engine The transpose engine (TE) transposes the last axis of a tensor with other axes within a slice by"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.433195,
+              "text_preview": "ultichip system to avoid external DRAM accesses. The follow-on PuDianNao (“general computer”) is aimed at more traditional machine learning algorithms beyond DNNs, such as support "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.432271,
+              "text_preview": "mory in the TPU would triple achieved TOPS and raise TOPS/Watt to nearly 70X the GPU CPU. 1. Introduction to Neural Networks The synergy between the large data sets in the cloud an"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 7,
+              "score": 0.430862,
+              "text_preview": ".. 8 x 32 x FP32/INT32... x8 x8 x8 Operation Sequencer ... ... sources and destinations, as determined by the compiler. The circuit-switched network allows for high throughput and "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.429523,
+              "text_preview": "mize the sync latency, a dedicated sync bus is deﬁned between the neural engines, (s1) and (s2), with 16ns for the longest path. A programmable load/store processor, shown in Fig. "
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.504342
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.498382
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.489716
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 9,
+              "score": 0.469395
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 8,
+              "score": 0.466352
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.3333333333333333,
+          "ndcg_at_k": 0.5
+        },
+        {
+          "query_id": "q4",
+          "query": "NPU basics dataflow memory hierarchy and efficiency",
+          "relevant_sources": [
+            "NPU_Basic.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.678468,
+              "text_preview": "ng the data [Rea16]. [Gup15] looks arithmetic for training instead of for inference. Others leverage the lower precision of DNN calculations by utilizing analog circuits during the"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.661819,
+              "text_preview": "ithreading, multiprocessing, prefetching,...) that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.654932,
+              "text_preview": "Processor, shared on-chip memory, and GDDR6 memory on one substrate. The architecture relies on a sophisticated Network-on-Chip for high-bandwidth inter-component communication and"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.643123,
+              "text_preview": "10 dataflow architecture that takes advantage of zeros by run-length encoding data to reduce the memory footprint and saves power by avoiding computations when an input is zero [Ch"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.640171,
+              "text_preview": "7 likely would aggressively tune the host code given a 3X faster TPU’. Replacing just the DDR3 Weight Memory with the equivalent GDDR5 memory requires doubling the number of memory"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.62896,
+              "text_preview": "1 In-Datacenter Performance Analysis of a Tensor Processing Unit Abstract Many architects believe that major improvements in cost-energy-performance must now come from domain-speci"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.627037,
+              "text_preview": "nt high-bandwidth interconnect between the host and external DRAM, shown in Fig. 2.4.2 as d4- a. To hit the required memory bandwidth from a single neural engine perspective, we ex"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.625708,
+              "text_preview": "tunately, the TPU has a simple and repeatable execution model to help meet the response-time targets of interactive services and such high peak throughput that even small batch siz"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.621203,
+              "text_preview": "ut over the PCIe bus. Figures 6 and 7 show rooflines for a single Haswell die and for a single K80 die. The six NN applications are generally further below their ceilings than was "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.614602,
+              "text_preview": "eration. 10. Conclusion Despite living on an I/O bus and having relatively little memory bandwidth that limits utilization of the TPU-four of the sixNN applications are memory-boun"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.610683,
+              "text_preview": "is far to the right at 1350 operations per byte of weight memory fetched. The gap between the actual operations per second of an application and the ceiling directly above it shows"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.606471,
+              "text_preview": "emory operations and processor-to-processor communications with decentralized RISC-type processor cores within a single engine. The command processor (CP) compiles command descript"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 4,
+              "score": 0.60642,
+              "text_preview": "operations, and a tensor DMA engine (TDMA) for transfers of tensors. The TU is a substantial entity, equipped with 32 MB of SRAM and is capable of 64 TOPS. It accelerates tensor op"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.606013,
+              "text_preview": "ncies. To address the overhead, ﬁ ve levels of synchronization hierarchy are deﬁned. The L0-sync, the lowest level depicted as s0 in Fig. 2.4.2, resolves the intra-core instruction"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 5,
+              "score": 0.605031,
+              "text_preview": "fers insights on the causes of performance bottlenecks. The assumption behind the model is that applications don’t fit in on-chip caches, so they are either computation-limited or "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 4,
+              "score": 0.603977,
+              "text_preview": "ode to be run from scratchpad memory, simplifying the programming model. Memory transfers are the bottleneck of most of neural networks, especially LLMs. In TCP, they are done asyn"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.596741,
+              "text_preview": "s than half the power of the K80 in a relatively small die. This larger memory helps increase the operational intensity of applications to let them utilize the abundant MACs even m"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.596108,
+              "text_preview": "local access. A nearby L1 Neural Cache provides faster access close to the engines, while a 32 MB SRAM L2 Shared Memory uses multiple levels of interleaving to support parallelism,"
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.59581,
+              "text_preview": "The shift of intelligent compute to edge devices requires NPUs to execute a wide spectrum of workloads, ranging from compute-bound CNNs to memory-intensive transformer-based LLMs, "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 4,
+              "score": 0.595389,
+              "text_preview": "r can begin; we see a “delay slot,” where the matrix unit waits for explicit synchronization before safely reading from the Unified Buffer. As reading a large SRAM uses much more p"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 10,
+              "score": 0.678468
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 1,
+              "score": 0.654932
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.627037
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 4,
+              "score": 0.60642
+            },
+            {
+              "source": "mobilint_aries.pdf",
+              "page": 1,
+              "score": 0.59581
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 1.0,
+          "ndcg_at_k": 1.0
+        },
+        {
+          "query_id": "q5",
+          "query": "AI inference accelerator efficiency TOPS per watt latency",
+          "relevant_sources": [
+            "NPU_Basic.pdf",
+            "furiosa_article.pdf",
+            "rebellions_whitepaper.pdf"
+          ],
+          "retrieved": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.673332,
+              "text_preview": "formance proxy, we believe that keeping the computing units busy is one of the most important factors to build a faster yet efﬁcient inference accelerator. Compared to another AI a"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.587557,
+              "text_preview": "11 need to perform well when coping with 99th-percentile latency deadlines. While the K80 may excel at training, on average it is just a little faster than Haswell at inference for"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 14,
+              "score": 0.58725,
+              "text_preview": "igher utilization due to TCP’s architecture which makes better use of parallelism and data reuse available in tensor contractions. over multiple sequence lengths. For sequence leng"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.585807,
+              "text_preview": "1 In-Datacenter Performance Analysis of a Tensor Processing Unit Abstract Many architects believe that major improvements in cost-energy-performance must now come from domain-speci"
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.580403,
+              "text_preview": "TOM is reported at 45.0 W average power with 56.1 tokens/s, corresponding to 0.80 tokens/J, while the NVIDIA A100 is shown at 177.5 W and 44.3 tokens/s, corresponding to 0.25 token"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.578898,
+              "text_preview": "thanto, Jonghyeon Kim, Heejin Cho, Hyebin Jeong, Sungmin Choi, Sujin Han, Junkyu Park, Kwangbae Lee, Sung-il Bae, Jaeho Bang, Kyeong-Jae Lee, Yeongsang Jang, Jungchul Park, Sanggyu"
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.571021,
+              "text_preview": "mize the sync latency, a dedicated sync bus is deﬁned between the neural engines, (s1) and (s2), with 16ns for the longest path. A programmable load/store processor, shown in Fig. "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 6,
+              "score": 0.567384,
+              "text_preview": "ut over the PCIe bus. Figures 6 and 7 show rooflines for a single Haswell die and for a single K80 die. The six NN applications are generally further below their ceilings than was "
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 7,
+              "score": 0.567186,
+              "text_preview": "hasn’t yet caught up with MLPs and LSs in the datacenter. We hope that architects try to accelerate MLPs and LSs with at least as much gusto.  Pitfall: For NN hardware, Inferences"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 2,
+              "score": 0.566486,
+              "text_preview": "or instance, in the case of the attention layer of transformer models [21], a PE’s slices can be configured to operate in parallel for each head, e.g., 16 slices per head (see Fig."
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.56637,
+              "text_preview": "proposed system features. Up to 98.9% neural engine utilization was measured, which is attributed to the command processing control loop with the balanced internal storage and the "
+            },
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.565119,
+              "text_preview": "onsiveness and stable 99- percentile latency for industrial-automation solutions. To realize decreased latency [3] and enhanced resource utilization compared to previous AI acceler"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.563823,
+              "text_preview": "d Optimization A precise cost model is critical for optimizing AI programs. Such a model helps predict how different tactics affect performance and power consumption, allowing for "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 15,
+              "score": 0.563499,
+              "text_preview": "15 execution time. The optimal cases commonly utilize all the eight DPEs in parallel. They differ in the usage of the accumulation unit and the data supply from the fetch unit. On "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 16,
+              "score": 0.561894,
+              "text_preview": "and their order in TCP computation and tries to provide the best configuration for the given requirements of performance and power consumption. We demonstrated that, in the case st"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 2,
+              "score": 0.56172,
+              "text_preview": "millions of lines of C++ code. The applications are typically user-facing, which leads to rigid response-time limits. Each model needs between 5M and 100M weights (9th column of Ta"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 1,
+              "score": 0.555659,
+              "text_preview": "024. We performed an extensive case study of running the LLaMA-2 7B model and evaluated its performance and power efficiency on various configurations of sequence length and batch "
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 16,
+              "score": 0.554981,
+              "text_preview": "16 VIII. CONCLUSION We presented TCP (Tensor Contraction Processor), a novel accelerator for AI workloads. Our proposed SoC consists of eight PEs with two HBM stacks. The PE archit"
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 1,
+              "score": 0.554519,
+              "text_preview": "ithreading, multiprocessing, prefetching,...) that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and"
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 1,
+              "score": 0.553222,
+              "text_preview": "intra compute units. To do that, we propose a circuit switch-based fetch network to flexibly connect compute units to enable inter-compute unit data reuse. We also exploit input br"
+            }
+          ],
+          "retrieved_unique_sources": [
+            {
+              "source": "rebellions_atomos.pdf",
+              "page": 1,
+              "score": 0.673332
+            },
+            {
+              "source": "NPU_Basic.pdf",
+              "page": 11,
+              "score": 0.587557
+            },
+            {
+              "source": "furiosa_article.pdf",
+              "page": 14,
+              "score": 0.58725
+            },
+            {
+              "source": "rebellions_whitepaper.pdf",
+              "page": 2,
+              "score": 0.580403
+            }
+          ],
+          "hit_at_k": 1.0,
+          "mrr_at_k": 0.5,
+          "ndcg_at_k": 0.7328286204777911
+        }
+      ],
+      "status": "ok"
+    }
+  ]
+}

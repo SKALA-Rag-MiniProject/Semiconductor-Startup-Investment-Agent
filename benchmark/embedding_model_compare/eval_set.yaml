@@ -2,7 +2,7 @@ queries:
   - id: q1
     query: "Rebellions NPU architecture and performance characteristics"
     relevant_sources:
-      - "libelion_whitepaper.pdf"
+      - "rebellions_whitepaper.pdf"
   - id: q2
     query: "FuriosaAI product benchmark deployment information"
     relevant_sources:
@@ -10,14 +10,14 @@ queries:
   - id: q3
     query: "Mobilint product overview and edge AI solution"
     relevant_sources:
-      - "Mobilint Products Brochure(EN).pdf"
+      - "mobilint_aries.pdf"
   - id: q4
     query: "NPU basics dataflow memory hierarchy and efficiency"
     relevant_sources:
-      - "NPU_basic.pdf"
+      - "NPU_Basic.pdf"
   - id: q5
     query: "AI inference accelerator efficiency TOPS per watt latency"
     relevant_sources:
-      - "NPU_basic.pdf"
-      - "libelion_whitepaper.pdf"
+      - "NPU_Basic.pdf"
+      - "rebellions_whitepaper.pdf"
       - "furiosa_article.pdf"
