@@ -18,7 +18,7 @@ ENV_FILE = Path.home() / "key.env"   # API 키 파일
 # ── 경로 ──────────────────────────────────────────────
 DATA_DIR = Path("data")
 FALLBACK_FILES: List[str] = ["NPU_basic.pdf"]
-EMBEDDING_MODEL = "allenai-specter"
+EMBEDDING_MODEL = "BAAI/bge-m3"
 
 # ── 청킹 ──────────────────────────────────────────────
 CHUNK_SIZE = 900
